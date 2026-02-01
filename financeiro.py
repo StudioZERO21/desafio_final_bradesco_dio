@@ -3,7 +3,7 @@ import time
 from google import genai
 from google.genai import errors
 
-# --- CONFIGURAÇÃO DE AMBIENTE ---
+
 MINHA_CHAVE = "DIGITE AQUI A SUA CHAVE"
 MODELO_ID = "gemini-2.5-flash"
 
@@ -25,10 +25,9 @@ def iniciar_sessao():
     )
 
 def simulador_poupanca_vs_selic(valor):
-    """Exemplo de funcionalidade de cálculo demonstrativo citada no roteiro"""
-    # Lógica simples de Python para simulação
-    selic_estimada = 0.1075  # 10.75% ao ano
-    poupanca_estimada = 0.0617 # ~6.17% ao ano
+   
+    selic_estimada = 0.1075  # Valor de exemplo  10.75% ao ano
+    poupanca_estimada = 0.0617 # Valor de exemplo ~6.17% ao ano
     
     res_selic = valor * (1 + selic_estimada)
     res_poup = valor * (1 + poupanca_estimada)
@@ -39,7 +38,7 @@ def simulador_poupanca_vs_selic(valor):
 
 def executar_assistente():
     chat = iniciar_sessao()
-    print("--- EXPERIÊNCIA DIGITAL FINANCEIRA ---")
+    print("--- EXPERIÊNCIA DIGITAL FINANCEIRA COM DIO & BRADESCO ---")
     print("Olá! Sou seu assistente guiado por IA. Como posso ajudar seu bolso hoje?")
     print("(Digite 'sair' para encerrar ou 'simular' para um exemplo de cálculo)\n")
 
@@ -47,7 +46,7 @@ def executar_assistente():
         entrada = input("Você: ").strip()
 
         if entrada.lower() in ["sair", "exit"]:
-            print("\nObrigado por utilizar nossa solução financeira. Até logo!")
+            print("\nObrigado por utilizar nosso sistema. Até logo!")
             break
         
         if entrada.lower() == "simular":
@@ -64,7 +63,7 @@ def executar_assistente():
         
         except errors.ClientError as e:
             if "429" in str(e):
-                print(" Sistema processando muitas requisições. Aguarde instantes...")
+                print("\n[AVISO]: Sistema processando muitas requisições. Aguarde instantes...")
                 time.sleep(30)
             else:
                 print(f"Erro técnico: {e}")
